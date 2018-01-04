@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#160f29"
+    tools:context="com.example.saadiqbal.tutorsideapplication.Signup">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="435dp"
+        android:background="#fff"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:id="@+id/name"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Full Name"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="50dp"
+            />
+        <EditText
+            android:id="@+id/email"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email Address"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/password"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:password="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/repassword"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:password="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re Enter Password"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/contactno"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            />
+        <Button
+            android:id="@+id/next"
+            android:background="@drawable/buttton"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:backgroundTint="#160f29"
+            android:text="Next"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#ffff"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#246a72">
+    </LinearLayout>
+</LinearLayout>
