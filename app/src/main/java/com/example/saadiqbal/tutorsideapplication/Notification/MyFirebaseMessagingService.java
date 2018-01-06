@@ -61,6 +61,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
        notificationIntent.putExtra("phoneNo",notificationObject.getString("phoneNo"));
        notificationIntent.putExtra("type",notificationObject.getString("type"));
        notificationIntent.putExtra("reqId",notificationObject.getString("reqId"));
+       notificationIntent.putExtra("latitude",notificationObject.getString("latitude"));
+       notificationIntent.putExtra("longitude",notificationObject.getString("longitude"));
+
 
 
 
@@ -68,52 +71,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                PendingIntent.FLAG_UPDATE_CURRENT);
     builder.setContentIntent(contentIntent);
         builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
-//        builder.setColor(Integer.parseInt(remoteMessage.getNotification().getColor()));
-        // Add as notification
+
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
-
-       //tutor phone no
-       // request id
-       //  ye values intent ma pass hong
-       //
-
-      /* String latitude = notificationObject.getString("latitude");
-        String longitude = notificationObject.getString("longitude");
-        String title = notificationObject.getString("title");
-    *//*    String address = notificationObject.getString("address");
-        String jobId = notificationObject.getString("jobId");
-        String type = notificationObject.getString("type");
-*//*
-
-        Intent notificationIntent = new Intent(this, NavigationDrawer.class);
-       *//* notificationIntent.putExtra("latitude", latitude);
-        notificationIntent.putExtra("longitude", longitude);
-        notificationIntent.putExtra("title", title);
-        notificationIntent.putExtra("address", address);
-        notificationIntent.putExtra("type", type);
-        notificationIntent.putExtra("jobId", jobId);*//*
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-        startActivity(notificationIntent);
-*/
-       // Log.d(TAG, "Body" + latitude + "" + longitude + "" + title + "" + address + "" + type);
-
-
-        /*updateMyActivity(getApplicationContext(),latitude,longitude,title,address,type,jobId);
-*/
-
     }
-/*
-    static void updateMyActivity(Context context, String latitude, String longitude, String title, String address, String type, String jobId) {
-        Intent notificationIntent = new Intent("com.google.android.c2dm.intent.RECEIVE");
-        //put whatever data you want to send, if any
-        notificationIntent.putExtra("latitude", latitude);
-        notificationIntent.putExtra("longitude", longitude);
-        notificationIntent.putExtra("title", title);
-        notificationIntent.putExtra("address", address);
-        notificationIntent.putExtra("type", type);
-        notificationIntent.putExtra("jobId", jobId);
-        //send broadcast
-        context.sendBroadcast(notificationIntent);
-    } */
 }

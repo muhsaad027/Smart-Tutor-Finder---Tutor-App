@@ -3,4 +3,5 @@
     <color name="colorPrimary">#160f29</color>
     <color name="colorPrimaryDark">#160f29</color>
     <color name="colorAccent">#160f29</color>
+    <color name="bt_rq_back_ground_color">#08c611</color>
 </resources>

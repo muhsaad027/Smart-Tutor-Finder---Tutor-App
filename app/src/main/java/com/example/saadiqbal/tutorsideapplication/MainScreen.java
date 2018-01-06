@@ -1,11 +1,17 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.*;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,22 +28,35 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainScreen extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-public String phone;
-    Button accept ;
-    String courseName ,reqId;
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+    public String phone;
+    Button accept;
+    String courseName, reqId;
+    LatLng altitude;
+    private GoogleMap mMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        accept = (Button)findViewById(R.id.req_accept);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map_current);
+        mapFragment.getMapAsync(this);
+
+        accept = (Button) findViewById(R.id.req_accept);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +72,7 @@ public String phone;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         onNewIntent(getIntent());
+        MapsActivity n = new MapsActivity();
     }
 
     @Override
@@ -117,16 +137,20 @@ public String phone;
         super.onNewIntent(intent);
 
         Bundle bundle = intent.getExtras();
-        if(bundle!= null)
-        {
-              courseName = bundle.getString("title");
-              reqId = bundle.getString("reqId");
+        if (bundle != null) {
+            accept.setEnabled(true);
+            accept.setBackgroundColor(getResources().getColor(R.color.bt_rq_back_ground_color));
+            Double lat = Double.parseDouble(bundle.getString("latitude"));
+            Double lng = Double.parseDouble(bundle.getString("longitude"));
+            Log.v("MAINSCREEN", " lat  " + lat + "  lng  " + lng);
+            altitude = new LatLng(lat, lng);
+            courseName = bundle.getString("title");
+            reqId = bundle.getString("reqId");
 
         }
     }
 
-    public void datasend()
-    {
+    public void datasend() {
        /* Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
@@ -140,13 +164,13 @@ public String phone;
 //            phone = "+92" + phone.substring(1);
 //        }
 
-        if(reqId == null || channel == null) {
-            Toast.makeText(this,"Something went wrong",Toast.LENGTH_LONG).show();
+        if (reqId == null || channel == null) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
             return;
         }
         AndroidNetworking.get(URLTutor.URL_SendRequestResponse)
-                .addQueryParameter("tutPhone",channel )
-                .addQueryParameter("reqId",reqId)
+                .addQueryParameter("tutPhone", channel)
+                .addQueryParameter("reqId", reqId)
                 .setTag("test")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -165,17 +189,15 @@ public String phone;
                         }
 
 
-                        if(!error)
-                        {
-                            Toast.makeText(MainScreen.this,""+phone,Toast.LENGTH_LONG).show();
-                            Toast.makeText(MainScreen.this,""+message,Toast.LENGTH_LONG).show();
-                        }
-                        else
-                        {
-                            Toast.makeText(MainScreen.this,""+phone,Toast.LENGTH_LONG).show();
-                            Toast.makeText(MainScreen.this,""+message,Toast.LENGTH_LONG).show();
+                        if (!error) {
+                            Toast.makeText(MainScreen.this, "" + phone, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainScreen.this, "" + phone, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
                         }
                     }
+
                     @Override
                     public void onError(ANError error) {
                         // handle error
@@ -183,5 +205,32 @@ public String phone;
 
                     }
                 });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                //Location Permission already granted
+                mMap.setMyLocationEnabled(true);
+            } else {
+                //Request Location Permission
+            }
+        } else {
+            mMap.setMyLocationEnabled(true);
+        }
+
+        // Add a marker in Sydney and move the camera
+        if(altitude != null)
+        {
+            mMap.addMarker(new MarkerOptions().position(altitude).title("Student Here"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(altitude, 15.0f));
+        }
+
+
     }
 }

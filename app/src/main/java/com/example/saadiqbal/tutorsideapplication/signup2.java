@@ -132,6 +132,7 @@ public String name,email,pass,contact; Double latid,longid;
                 .getWebsiteUri(), place.getId(), place.getLatLng()));
         latid = place.getLatLng().latitude;
         longid = place.getLatLng().longitude;
+
         if (!TextUtils.isEmpty(place.getAttributions())){
             attributionsTextView.setText(Html.fromHtml(place.getAttributions().toString()));
         }

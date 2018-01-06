@@ -55,7 +55,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="To complete verification enter 6-digit code for activation"
-                android:textColor="#fff"
+                android:textColor="#7c7878"
                 android:textSize="16sp" />
 
 
@@ -75,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:background="#160f29"
                 android:text="Verify"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp" />
