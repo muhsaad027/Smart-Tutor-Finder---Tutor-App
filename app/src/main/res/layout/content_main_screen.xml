@@ -25,7 +25,6 @@
         android:layout_gravity="bottom"
         android:background="#a3a3a3"
         android:enabled="false"
-
         android:text="Accept"
         android:textColor="#fff"
         android:textStyle="bold" />
