@@ -106,7 +106,7 @@ Button loginpage;
                         {
                             SendRegistrationTokenFCM.sendRegistrationToServer(Login.this, FirebaseInstanceId.getInstance().getToken(), finalPhone);
                             Toast.makeText(Login.this,""+message,Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Login.this,MainScreen.class);
+                            Intent intent = new Intent(Login.this,MainHomeScreenTutor.class);
                             startActivity(intent);
                             finish();
                         }

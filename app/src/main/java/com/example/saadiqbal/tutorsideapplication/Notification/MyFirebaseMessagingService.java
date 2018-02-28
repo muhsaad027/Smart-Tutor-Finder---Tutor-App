@@ -34,21 +34,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         try {
             JSONObject notificationObject = new JSONObject(remoteMessage.getData().toString());
 
-         addNotification(notificationObject.getJSONObject("data"));
+            addNotification(notificationObject.getJSONObject("data"));
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-       // Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification());
+        // Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification());
 
     }
 
-   private void addNotification(JSONObject notificationObject) throws JSONException {
+    private void addNotification(JSONObject notificationObject) throws JSONException {
 
-       String phoneNo = notificationObject.getString("phoneNo");
-       String requestID =notificationObject.getString("reqId");
+        String phoneNo = notificationObject.getString("phoneNo");
+        String requestID = notificationObject.getString("reqId");
 
 
         NotificationCompat.Builder builder =
@@ -56,20 +56,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle("" + notificationObject.getString("title"))
                         .setContentText("" + notificationObject.getString("message"));
-       Intent notificationIntent = new Intent(this, MainScreen.class);
-       notificationIntent.putExtra("title",notificationObject.getString("title"));
-       notificationIntent.putExtra("phoneNo",notificationObject.getString("phoneNo"));
-       notificationIntent.putExtra("type",notificationObject.getString("type"));
-       notificationIntent.putExtra("reqId",notificationObject.getString("reqId"));
-       notificationIntent.putExtra("latitude",notificationObject.getString("latitude"));
-       notificationIntent.putExtra("longitude",notificationObject.getString("longitude"));
+        Intent notificationIntent = new Intent(this, MainScreen.class);
+        notificationIntent.putExtra("title", notificationObject.getString("title"));
+        notificationIntent.putExtra("phoneNo", notificationObject.getString("phoneNo"));
+        notificationIntent.putExtra("type", notificationObject.getString("type"));
+        notificationIntent.putExtra("reqId", notificationObject.getString("reqId"));
+        notificationIntent.putExtra("latitude", notificationObject.getString("latitude"));
+        notificationIntent.putExtra("longitude", notificationObject.getString("longitude"));
 
 
-
-
-       PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-               PendingIntent.FLAG_UPDATE_CURRENT);
-    builder.setContentIntent(contentIntent);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
         builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
