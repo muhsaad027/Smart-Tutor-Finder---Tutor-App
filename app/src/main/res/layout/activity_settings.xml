@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.saadiqbal.tutorsideapplication.Settings">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/pagetitle"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#160f29"
+        android:minHeight="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_weight="0.2"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="2.3">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/people" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <View
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#c4c3c3"></View>
+                    <TextView
+                        android:paddingTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_name_setting"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Muhammad"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:paddingLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:paddingTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_phno_setting"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+923313844515"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="15dp"
+
+                        android:layout_height="wrap_content"
+                        android:text="Email Address"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_emails_setting"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="saad@ahmedgraf.com"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            >
+            <Button
+                android:id="@+id/id_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:text="LOGOUT"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+

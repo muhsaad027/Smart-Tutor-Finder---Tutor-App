@@ -11,6 +11,10 @@
 
             android:title="Courses" />
         <item
+            android:id="@+id/ManageDayTime"
+
+            android:title="My Availability" />
+        <item
             android:id="@+id/faqs"
 
             android:title="FAQs" />

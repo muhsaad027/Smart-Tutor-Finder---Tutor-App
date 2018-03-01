@@ -1,5 +1,6 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.SupportMapFragment;
 
 public class MainHomeScreenTutor extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,6 +73,10 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
 
         if (id == R.id.inbox) {
             // Handle the camera action
+        } else if (id == R.id.ManageDayTime) {
+            Intent intent = new Intent(MainHomeScreenTutor.this,DayTimeBooking.class);
+            startActivity(intent);
+
         } else if (id == R.id.mycourses) {
 
         } else if (id == R.id.faqs) {
@@ -78,7 +84,8 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         } else if (id == R.id.help) {
 
         } else if (id == R.id.settings) {
-
+            Intent intent = new Intent(MainHomeScreenTutor.this,Settings.class);
+            startActivity(intent);
         } else if (id == R.id.contactus) {
 
         }

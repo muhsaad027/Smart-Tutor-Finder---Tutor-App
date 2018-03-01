@@ -1,9 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.saadiqbal.tutorsideapplication.DayTimeBooking">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/TimingScreen"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#256a72"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Teaching Days / Timings"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Confirm Teaching Time"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="#160f29"
+                android:textSize="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:text="Monday"
+
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/tuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:text="Tuesday"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/wednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#fff"
+                    android:text="wednesday"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/thursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Thursday"
+                    android:textColor="#000"
+                    android:background="#fff"/>
+
+                <Button
+                    android:id="@+id/friday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Friday"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/saturday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Saturday"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="3">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:background="#fff"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sunday"
+                    android:id="@+id/sunday"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Confirm Teaching Time"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="#256a72"
+                android:textSize="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/slot1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2 - 3 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3 - 4 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4 - 5 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+                <Button
+                    android:id="@+id/slot4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5 - 6 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/slot5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="6 - 7 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="7 - 8 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8 - 9 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+                <Button
+                    android:id="@+id/slot8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9 - 10 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:weightSum="4">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10 - 11 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+                <Button
+                    android:id="@+id/slot10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11 -12 PM"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:background="#fff"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="save cahnges"
+                    android:background="#160f29"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
