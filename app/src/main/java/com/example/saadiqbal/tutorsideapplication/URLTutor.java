@@ -15,6 +15,8 @@ public class URLTutor {
     public static final String URL_Settings = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/studentProfile";
     public  static  String  URL_TUTOR_FCMKEY_UPDATE ="http://hometuition.ahmedgraf.com/HomeTuition/Test1/updatetTutor_FCMKey";
     public static final String URL_SendRequestResponse = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/sendRequestStudent";
+    public static final String URL_StatusUpdate = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/sendRequestStudent";
+    public static final String URL_DateTimeUpdate = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/sendRequestStudent";
 
     public  static  String getPhoneNo (Context context)
     {

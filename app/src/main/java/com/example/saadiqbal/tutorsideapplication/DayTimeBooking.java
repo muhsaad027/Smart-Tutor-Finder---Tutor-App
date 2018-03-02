@@ -1,29 +1,41 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class DayTimeBooking extends AppCompatActivity implements View.OnClickListener {
 
-    Button mon,tue,wed,thur,fri,sat,sun;
-    Button t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
+    Button mon, tue, wed, thur, fri, sat, sun;
+    Button t1, t2, t3, t4, t5, t6, t7, t8, t9, t10;
+    Button saveTime;
+
+    int[] dayList = new int[]{R.id.monday, R.id.tuesday, R.id.wednesday, R.id.thursday, R.id.friday, R.id.saturday, R.id.sunday};
+    int[] timeList = new int[]{R.id.slot1, R.id.slot2, R.id.slot3, R.id.slot4, R.id.slot5, R.id.slot6, R.id.slot7, R.id.slot8, R.id.slot9, R.id.slot10};
+
+    ArrayList<Button> dayarrayList = new ArrayList<>();
+    ArrayList<Button> timearrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_time_booking);
-        mon = (Button) findViewById(R.id.monday);
-        tue = (Button) findViewById(R.id.tuesday);
-        wed = (Button) findViewById(R.id.wednesday);
-        thur = (Button) findViewById(R.id.thursday);
-        fri = (Button) findViewById(R.id.friday);
-        sat = (Button) findViewById(R.id.saturday);
-        sun = (Button) findViewById(R.id.sunday);
+        dayarrayList.add(mon = (Button) findViewById(R.id.monday));
+        dayarrayList.add(tue = (Button) findViewById(R.id.tuesday));
+        dayarrayList.add(wed = (Button) findViewById(R.id.wednesday));
+        dayarrayList.add(thur = (Button) findViewById(R.id.thursday));
+        dayarrayList.add(fri = (Button) findViewById(R.id.friday));
+        dayarrayList.add(sat = (Button) findViewById(R.id.saturday));
+        dayarrayList.add(sun = (Button) findViewById(R.id.sunday));
         mon.setOnClickListener(this);
         tue.setOnClickListener(this);
         wed.setOnClickListener(this);
@@ -31,16 +43,16 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
         fri.setOnClickListener(this);
         sat.setOnClickListener(this);
         sun.setOnClickListener(this);
-        t1 = (Button)findViewById(R.id.slot1);
-        t2 = (Button)findViewById(R.id.slot2);
-        t3 = (Button)findViewById(R.id.slot3);
-        t4 = (Button)findViewById(R.id.slot4);
-        t5 = (Button)findViewById(R.id.slot5);
-        t6 = (Button)findViewById(R.id.slot6);
-        t7 = (Button)findViewById(R.id.slot7);
-        t8 = (Button)findViewById(R.id.slot8);
-        t9 = (Button)findViewById(R.id.slot9);
-        t10 = (Button)findViewById(R.id.slot10);
+        timearrayList.add(t1 = (Button) findViewById(R.id.slot1));
+        timearrayList.add(t2 = (Button) findViewById(R.id.slot2));
+        timearrayList.add(t3 = (Button) findViewById(R.id.slot3));
+        timearrayList.add(t4 = (Button) findViewById(R.id.slot4));
+        timearrayList.add(t5 = (Button) findViewById(R.id.slot5));
+        timearrayList.add(t6 = (Button) findViewById(R.id.slot6));
+        timearrayList.add(t7 = (Button) findViewById(R.id.slot7));
+        timearrayList.add(t8 = (Button) findViewById(R.id.slot8));
+        timearrayList.add(t9 = (Button) findViewById(R.id.slot9));
+        timearrayList.add(t10 = (Button) findViewById(R.id.slot10));
         t1.setOnClickListener(this);
         t2.setOnClickListener(this);
         t3.setOnClickListener(this);
@@ -51,6 +63,9 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
         t8.setOnClickListener(this);
         t9.setOnClickListener(this);
         t10.setOnClickListener(this);
+        saveTime = (Button) findViewById(R.id.savedatetime);
+        saveTime.setOnClickListener(this);
+
     }
 
     private void changeBackgroundColor(View view) {
@@ -122,6 +137,33 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.slot10:
                 changeBackgroundColor(view);
+                break;
+            case R.id.savedatetime:
+
+                String teachingday = "";
+                String teachingtime = "";
+                for (int i = 0; i < dayarrayList.size(); i++) {
+                    if (dayarrayList.get(i).getTag() != null && ((int) dayarrayList.get(i).getTag()) == R.color.themeappblue) {
+
+                        teachingday += dayarrayList.get(i).getText() + ",";
+                    }
+                }/*
+                Log.d("DayBooking","  aa  : "+teachingday);
+                Toast.makeText(this,"HERE "+teachingday,Toast.LENGTH_LONG).show();*/
+
+                for (int i = 0; i < timearrayList.size(); i++) {
+                    if (timearrayList.get(i).getTag() != null && ((int) timearrayList.get(i).getTag()) == R.color.themeappblue) {
+
+                        teachingtime += timearrayList.get(i).getText() + ",";
+                    }
+                }
+
+
+                /*
+                Log.d("TimeBooking","  aa  : "+teachingday);
+                Toast.makeText(this,"HERE "+teachingtime,Toast.LENGTH_LONG).show();*/
+/*                Intent intent = new Intent(DayTimeBooking.this,MainHomeScreenTutor.class);
+                startActivity(intent);*/
                 break;
         }
     }

@@ -335,6 +335,7 @@
                     android:textColor="#fff"
                     android:textStyle="bold"
                     android:textSize="17dp"
+                    android:id="@+id/savedatetime"
                     />
 
             </LinearLayout>
