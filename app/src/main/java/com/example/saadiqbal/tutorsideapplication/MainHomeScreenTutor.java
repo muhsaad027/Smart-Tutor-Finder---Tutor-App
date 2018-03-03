@@ -1,6 +1,8 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,13 +11,33 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.saadiqbal.tutorsideapplication.Notification.SendRegistrationTokenFCM;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainHomeScreenTutor extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String PREFS_NAME = "preferences";
+    public static final String PREF_UNAME = "Username";
+    Button online, offline;
+    Integer statusonline = 1;
+    Integer statusoffline = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +45,27 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         setContentView(R.layout.activity_main_home_screen_tutor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        online = (Button) findViewById(R.id.getonline);
+        offline = (Button) findViewById(R.id.getoffline);
+
+
+        online.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datasend(statusonline);
+            }
+        });
+
+
+        offline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datasend(statusoffline);
+            }
+        });
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -33,6 +76,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         navigationView.setNavigationItemSelectedListener(this);
         onNewIntent(getIntent());
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,7 +118,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         if (id == R.id.inbox) {
             // Handle the camera action
         } else if (id == R.id.ManageDayTime) {
-            Intent intent = new Intent(MainHomeScreenTutor.this,DayTimeBooking.class);
+            Intent intent = new Intent(MainHomeScreenTutor.this, DayTimeBooking.class);
             startActivity(intent);
 
         } else if (id == R.id.mycourses) {
@@ -84,7 +128,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         } else if (id == R.id.help) {
 
         } else if (id == R.id.settings) {
-            Intent intent = new Intent(MainHomeScreenTutor.this,Settings.class);
+            Intent intent = new Intent(MainHomeScreenTutor.this, Settings.class);
             startActivity(intent);
         } else if (id == R.id.contactus) {
 
@@ -93,5 +137,63 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void datasend(Integer status)
+    {
+        String phone = loadPreferences();
+        if (phone.length() == 10) {
+            phone = "+92" + phone;
+        } else {
+            phone = "+92" + phone.substring(1);
+        }
+        Log.e("a",""+phone);
+        final String finalPhone = phone;
+        AndroidNetworking.post(URLTutor.URL_StatusUpdate)
+                .addBodyParameter("TutPhone", phone)
+                .addBodyParameter("Status", status.toString())
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        boolean error = false;
+                        String message = "";
+
+                        try {
+                            message = response.getString("message");
+                            error = response.getBoolean("error");
+                        } catch (JSONException e) {
+ Log.e("MainHomeScreen",""+e.getLocalizedMessage());
+                        }
+                        if(!error)
+                        {
+                         //   SendRegistrationTokenFCM.sendRegistrationToServer(MainHomeScreenTutor.this, FirebaseInstanceId.getInstance().getToken(), finalPhone);
+                            Toast.makeText(MainHomeScreenTutor.this,""+message,Toast.LENGTH_LONG).show();
+                        /*    Intent intent = new Intent(Login.this,MainHomeScreenTutor.class);
+                            startActivity(intent);
+                            finish();*/
+                        }
+                        else
+                        {
+                            Toast.makeText(MainHomeScreenTutor.this,""+message,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("MainHomeScreenError",""+error.getLocalizedMessage());
+                        // handle error
+                    }
+                });
+    }
+    private String loadPreferences() {
+
+        String tutphone;
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
+                Context.MODE_PRIVATE);
+
+        // Get value
+        tutphone = settings.getString(PREF_UNAME, "");
+        return tutphone;
     }
 }
