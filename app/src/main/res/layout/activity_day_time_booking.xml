@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#fff"
-                    android:text="wednesday"
+                    android:text="Wednesday"
                     android:textColor="#000" />
 
             </LinearLayout>

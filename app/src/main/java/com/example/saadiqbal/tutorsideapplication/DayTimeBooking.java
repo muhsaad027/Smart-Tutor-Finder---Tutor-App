@@ -1,6 +1,8 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +13,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class DayTimeBooking extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +28,9 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
     Button mon, tue, wed, thur, fri, sat, sun;
     Button t1, t2, t3, t4, t5, t6, t7, t8, t9, t10;
     Button saveTime;
+
+    public static final String PREFS_NAME = "preferences";
+    public static final String PREF_UNAME = "Username";
 
     int[] dayList = new int[]{R.id.monday, R.id.tuesday, R.id.wednesday, R.id.thursday, R.id.friday, R.id.saturday, R.id.sunday};
     int[] timeList = new int[]{R.id.slot1, R.id.slot2, R.id.slot3, R.id.slot4, R.id.slot5, R.id.slot6, R.id.slot7, R.id.slot8, R.id.slot9, R.id.slot10};
@@ -158,13 +171,70 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
                     }
                 }
 
-
+                datasend(teachingday,teachingtime);
                 /*
                 Log.d("TimeBooking","  aa  : "+teachingday);
-                Toast.makeText(this,"HERE "+teachingtime,Toast.LENGTH_LONG).show();*/
-/*                Intent intent = new Intent(DayTimeBooking.this,MainHomeScreenTutor.class);
-                startActivity(intent);*/
+                ;*/
                 break;
         }
+    }
+    public void datasend(String days,String time)
+    {
+        String phone = loadPreferences();
+        if (phone.length() == 10) {
+            phone = "+92" + phone;
+        } else {
+            phone = "+92" + phone.substring(1);
+        }
+        Log.e("a",""+phone);
+        final String finalPhone = phone;
+        AndroidNetworking.post(URLTutor.URL_DateTimeUpdate)
+                .addBodyParameter("TutPhone", phone)
+                .addBodyParameter("TeachingDays", days)
+                .addBodyParameter("TeachingTime", time)
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        boolean error = false;
+                        String message = "";
+
+                        try {
+                            message = response.getString("message");
+                            error = response.getBoolean("error");
+                        } catch (JSONException e) {
+                            Log.e("DayTimeScreen",""+e.getLocalizedMessage());
+                        }
+                        if(!error)
+                        {
+                            //   SendRegistrationTokenFCM.sendRegistrationToServer(MainHomeScreenTutor.this, FirebaseInstanceId.getInstance().getToken(), finalPhone);
+                            Toast.makeText(DayTimeBooking.this,""+message,Toast.LENGTH_LONG).show();
+//                            Toast.makeText(DayTimeBooking.this,"Successfully Updated",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(DayTimeBooking.this,MainHomeScreenTutor.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(DayTimeBooking.this,""+message,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("DayTimeScreenError",""+error.getLocalizedMessage());
+                        // handle error
+                    }
+                });
+    }
+    private String loadPreferences() {
+
+        String tutphone;
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
+                Context.MODE_PRIVATE);
+
+        // Get value
+        tutphone = settings.getString(PREF_UNAME, "");
+        return tutphone;
     }
 }
