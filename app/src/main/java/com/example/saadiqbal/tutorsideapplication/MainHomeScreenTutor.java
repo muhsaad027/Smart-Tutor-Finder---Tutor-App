@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -35,7 +38,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
 
     public static final String PREFS_NAME = "preferences";
     public static final String PREF_UNAME = "Username";
-    Button online, offline;
+    Button online, offline,currentTuition;
     Integer statusonline = 1;
     Integer statusoffline = 0;
 
@@ -48,7 +51,21 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
 
         online = (Button) findViewById(R.id.getonline);
         offline = (Button) findViewById(R.id.getoffline);
+        currentTuition= (Button) findViewById(R.id.currentTuition);
 
+        currentTuition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment orders_cancelled =new orders_cancelled();
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft= fm.beginTransaction();
+                ft.replace(R.id.container,orders_cancelled);
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
 
         online.setOnClickListener(new View.OnClickListener() {
             @Override

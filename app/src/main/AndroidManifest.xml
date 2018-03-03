@@ -60,7 +60,8 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainHomeScreenTutor" />
         <activity android:name=".DayTimeBooking" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".CurrentTuition"></activity>
     </application>
 
 </manifest>

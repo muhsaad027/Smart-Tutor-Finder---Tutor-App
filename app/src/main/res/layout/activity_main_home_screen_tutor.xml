@@ -15,6 +15,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="2"
+    android:id="@+id/container"
     tools:context="com.example.saadiqbal.tutorsideapplication.MainHomeScreenTutor">
 
 
@@ -171,7 +172,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>
     <android.support.design.widget.NavigationView

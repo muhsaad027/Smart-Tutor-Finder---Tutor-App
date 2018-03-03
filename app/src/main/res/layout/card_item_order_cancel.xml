@@ -1,0 +1,62 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_order_cancel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/StdReqID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student ID         : 001"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/StdName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Name  : Muhammad Saad Iqbal"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/StdPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Phone : +923313844515"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/StdStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Status : ACTIVE"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/StdReqTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Request Time  : 23:32"
+            android:textSize="18dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Finish"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:background="#d70606"
+            />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
