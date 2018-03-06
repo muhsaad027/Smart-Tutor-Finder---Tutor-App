@@ -47,7 +47,8 @@ public class MainScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     public String phone;
     Button accept;
-    String courseName, reqId;
+    String courseName;
+    Integer reqId;
     LatLng altitude;
     TextView t1;
     private GoogleMap mMap;
@@ -152,8 +153,9 @@ public class MainScreen extends AppCompatActivity
             Log.v("MAINSCREEN", " lat  " + lat + "  lng  " + lng);
             altitude = new LatLng(lat, lng);
             courseName = bundle.getString("title");
-            reqId = bundle.getString("reqId");
+            reqId = Integer.valueOf(bundle.getString("reqId"));
 
+            Log.v(""+MainScreen.this.getClass().getSimpleName(),"req Id : "+reqId);
         }
     }
 
@@ -165,11 +167,12 @@ public class MainScreen extends AppCompatActivity
         }*/
         SharedPreferences shared = getSharedPreferences(Login.PREFS_NAME, MODE_PRIVATE);
         String channel = (shared.getString(Login.PREF_UNAME, ""));
-//        if (phone.length() == 10) {
-//            phone = "+92" + phone;
-//        } else {
-//            phone = "+92" + phone.substring(1);
-//        }
+        Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+channel);
+        if (channel.length() == 10) {
+            channel = "+92" + channel;
+        } else {
+            channel = "+92" + channel.substring(1);
+        }
 
         if (reqId == null || channel == null) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -177,7 +180,7 @@ public class MainScreen extends AppCompatActivity
         }
         AndroidNetworking.get(URLTutor.URL_SendRequestResponse)
                 .addQueryParameter("tutPhone", channel)
-                .addQueryParameter("reqId", reqId)
+                .addQueryParameter("reqId", ""+reqId)
                 .setTag("test")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -191,6 +194,8 @@ public class MainScreen extends AppCompatActivity
                             //logDebug("Response  :  "+response);
                             message = response.getString("message");
                             error = response.getBoolean("error");
+                            Log.v(""+MainScreen.this.getClass().getSimpleName(),"message: "+message);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -209,6 +214,8 @@ public class MainScreen extends AppCompatActivity
                     public void onError(ANError error) {
                         // handle error
                         //logDebug("Error   " + error);
+                        Log.v(""+MainScreen.this.getClass().getSimpleName(),"error: "+ error.getLocalizedMessage());
+
 
                     }
                 });
