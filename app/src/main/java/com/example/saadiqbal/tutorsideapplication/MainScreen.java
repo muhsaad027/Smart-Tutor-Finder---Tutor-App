@@ -58,7 +58,8 @@ public class MainScreen extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        t1 = (TextView) findViewById(R.id.countDown);
+        t1 = (TextView) findViewById(R.id.countdown);
+
         setSupportActionBar(toolbar);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_current);
@@ -76,11 +77,10 @@ public class MainScreen extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         onNewIntent(getIntent());
-        MapsActivity n = new MapsActivity();
+        countDownTimer();
     }
 
     @Override
@@ -245,6 +245,21 @@ public class MainScreen extends AppCompatActivity
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(altitude, 15.0f));
         }
 
+
+    }
+    public void countDownTimer(){
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                t1.setText("Remaing : " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
+                startActivity(intent);
+                finish();
+            }
+        }.start();
 
     }
 }
