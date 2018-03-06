@@ -46,7 +46,7 @@ import java.util.concurrent.TimeUnit;
 public class MainScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     public String phone;
-    Button accept;
+    Button accept,reject;
     String courseName;
     Integer reqId;
     LatLng altitude;
@@ -59,16 +59,27 @@ public class MainScreen extends AppCompatActivity
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         t1 = (TextView) findViewById(R.id.countdown);
+        reject = (Button) findViewById(R.id.req_reject);
+
 
         setSupportActionBar(toolbar);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_current);
         mapFragment.getMapAsync(this);
+        reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+"checking accept ");
+
+            rejectData();
+            }
+        });
 
         accept = (Button) findViewById(R.id.req_accept);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+"checking accept ");
                 datasend();
             }
         });
@@ -219,6 +230,69 @@ public class MainScreen extends AppCompatActivity
 
                     }
                 });
+
+    }
+    public void rejectData() {
+       /* Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            phone = (String) bundle.get("phonenumber");
+        }*/
+        SharedPreferences shared = getSharedPreferences(Login.PREFS_NAME, MODE_PRIVATE);
+        String channel = (shared.getString(Login.PREF_UNAME, ""));
+        if (channel.length() == 10) {
+            channel = "+92" + channel;
+        } else {
+            channel = "+92" + channel.substring(1);
+        }
+        Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+channel);
+
+        if (reqId == null || channel == null) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+            return;
+        }
+        AndroidNetworking.get(URLTutor.URL_RequestCencel)
+                .addQueryParameter("TutPhone", channel)
+                .addQueryParameter("reqId", ""+reqId)
+                .setTag("test")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        boolean error = false;
+                        Integer message = 0;
+
+                        try {
+                            Log.v(""+MainScreen.this.getClass().getSimpleName(),"Respnse: "+response);
+
+                            message = (response.getInt("success"));
+                            Log.v(""+MainScreen.this.getClass().getSimpleName(),"message: "+message);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        if (message == 1) {
+                            Toast.makeText(MainScreen.this, " Sucessfully cencel" + phone, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainScreen.this, "Error occor " + phone, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                        //logDebug("Error   " + error);
+                        Log.v(""+MainScreen.this.getClass().getSimpleName(),"error: "+ error.getLocalizedMessage());
+
+
+                    }
+                });
+
     }
 
     @Override
