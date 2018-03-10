@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class Adapter_order_cancel extends RecyclerView.Adapter<Adapter_order_cancel.MyViewHolder> {
+public class AdapterTuitionCancel extends RecyclerView.Adapter<AdapterTuitionCancel.MyViewHolder> {
 
     private ArrayList<TutorCurrentTuitionsModel> arrayList ;
     Context acontext;
@@ -38,7 +38,7 @@ public class Adapter_order_cancel extends RecyclerView.Adapter<Adapter_order_can
 
     }
 
-    public Adapter_order_cancel(Context context, ArrayList<TutorCurrentTuitionsModel> arrayList) {
+    public AdapterTuitionCancel(Context context, ArrayList<TutorCurrentTuitionsModel> arrayList) {
         this.arrayList = arrayList;
         acontext = context;
     }

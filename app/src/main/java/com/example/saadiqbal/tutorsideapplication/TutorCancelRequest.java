@@ -5,7 +5,7 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Customer_cancelled_orders {
+public class TutorCancelRequest {
 
     public String jobTitle,personName,canceledBy,jobCreationTime;
 
@@ -41,14 +41,14 @@ public class Customer_cancelled_orders {
         this.jobCreationTime = jobCreationTime;
     }
 
-    public Customer_cancelled_orders(String jobTitle, String personName, String canceledBy, String jobCreationTime) {
+    public TutorCancelRequest(String jobTitle, String personName, String canceledBy, String jobCreationTime) {
         this.jobTitle = jobTitle;
         this.personName = personName;
         this.canceledBy = canceledBy;
         this.jobCreationTime = jobCreationTime;
     }
 
-    public Customer_cancelled_orders (JSONObject jsonObject) {
+    public TutorCancelRequest(JSONObject jsonObject) {
         try {
             this.jobTitle = jsonObject.getString("jobTitle");
             this.personName = jsonObject.getString("personName");

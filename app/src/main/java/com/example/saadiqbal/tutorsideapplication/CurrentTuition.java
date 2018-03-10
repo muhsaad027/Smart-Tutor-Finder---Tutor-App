@@ -37,7 +37,7 @@ public class CurrentTuition extends AppCompatActivity {
     RecyclerView rv;
 
 
-    private orders_cancelled.OnFragmentInteractionListener mListener;
+    private TuitionCancel.OnFragmentInteractionListener mListener;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,20 +71,20 @@ public class CurrentTuition extends AppCompatActivity {
 
                                 String jobTitle,personName,canceledBy,jobCreationTime;
 
-                                Customer_cancelled_orders customer_cancelled_orders = new Customer_cancelled_orders(jsonArray.getJSONObject(i));
+                                TutorCancelRequest tutorCancelRequest = new TutorCancelRequest(jsonArray.getJSONObject(i));
 
-                                jobTitle = customer_cancelled_orders.getJobTitle();
-                                personName = customer_cancelled_orders.getPersonName();
-                                canceledBy = customer_cancelled_orders.getCanceledBy();
-                                jobCreationTime = customer_cancelled_orders.getJobCreationTime();
+                                jobTitle = tutorCancelRequest.getJobTitle();
+                                personName = tutorCancelRequest.getPersonName();
+                                canceledBy = tutorCancelRequest.getCanceledBy();
+                                jobCreationTime = tutorCancelRequest.getJobCreationTime();
 
                                 Log.v("Tele ","jobtitle : "+jobTitle+" person name : "+personName+" canceled by : "+canceledBy+"jobCreationTime : "+jobCreationTime);
-                                Customer_cancelled_orders obj = new Customer_cancelled_orders( jobTitle,personName,canceledBy,jobCreationTime);
+                                TutorCancelRequest obj = new TutorCancelRequest( jobTitle,personName,canceledBy,jobCreationTime);
 
                                // data.add(obj);
                             }
 
-                            Adapter_order_cancel adapter = new Adapter_order_cancel(CurrentTuition.this,data);
+                            AdapterTuitionCancel adapter = new AdapterTuitionCancel(CurrentTuition.this,data);
                             rv.setAdapter(adapter);
                             LinearLayoutManager llm = new LinearLayoutManager(CurrentTuition.this);
                             rv.setLayoutManager(llm);
@@ -111,8 +111,8 @@ public class CurrentTuition extends AppCompatActivity {
 
 
     public void onAttach(Context context) {
-        if (context instanceof orders_cancelled.OnFragmentInteractionListener) {
-            mListener = (orders_cancelled.OnFragmentInteractionListener) context;
+        if (context instanceof TuitionCancel.OnFragmentInteractionListener) {
+            mListener = (TuitionCancel.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

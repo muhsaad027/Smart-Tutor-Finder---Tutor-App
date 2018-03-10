@@ -3,7 +3,6 @@ package com.example.saadiqbal.tutorsideapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,12 +24,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.saadiqbal.tutorsideapplication.Notification.SendRegistrationTokenFCM;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.firebase.iid.FirebaseInstanceId;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +51,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
             @Override
             public void onClick(View v) {
 
-                Fragment orders_cancelled =new orders_cancelled();
+                Fragment orders_cancelled =new TuitionCancel();
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft= fm.beginTransaction();
                 ft.replace(R.id.container,orders_cancelled);

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +23,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class orders_cancelled extends Fragment  {
+public class TuitionCancel extends Fragment  {
     public static final String PREFS_NAME = "preferences";
     public static final String PREF_UNAME = "Username";
     ArrayList<TutorCurrentTuitionsModel> data;
@@ -33,7 +32,7 @@ public class orders_cancelled extends Fragment  {
 
    // private OnFragmentInteractionListener mListener;
 
-    public orders_cancelled() {
+    public TuitionCancel() {
         // Required empty public constructor
     }
 
@@ -78,7 +77,7 @@ public class orders_cancelled extends Fragment  {
 
                                 TutorCurrentTuitionsModel currentTuitionsModel = new TutorCurrentTuitionsModel(jsonArray.getJSONObject(i));
 
-                      //          Customer_cancelled_orders customer_cancelled_orders = new Customer_cancelled_orders(jsonArray.getJSONObject(i));
+                      //          TutorCancelRequest customer_cancelled_orders = new TutorCancelRequest(jsonArray.getJSONObject(i));
 
                                 stdID = currentTuitionsModel.getStudentID();
                                 stdName = currentTuitionsModel.getStudentName();;
@@ -92,7 +91,7 @@ public class orders_cancelled extends Fragment  {
                                 data.add(obj);
                             }
 
-                            Adapter_order_cancel adapter = new Adapter_order_cancel(getActivity(),data);
+                            AdapterTuitionCancel adapter = new AdapterTuitionCancel(getActivity(),data);
                             rv.setAdapter(adapter);
                             LinearLayoutManager llm = new LinearLayoutManager(getActivity());
                             rv.setLayoutManager(llm);
