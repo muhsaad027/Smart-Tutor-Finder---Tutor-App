@@ -61,7 +61,6 @@
         <activity android:name=".MainHomeScreenTutor" />
         <activity android:name=".DayTimeBooking" />
         <activity android:name=".Settings" />
-        <activity android:name=".CurrentTuition"></activity>
     </application>
 
 </manifest>
