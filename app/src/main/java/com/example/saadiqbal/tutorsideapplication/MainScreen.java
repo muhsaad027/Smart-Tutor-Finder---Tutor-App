@@ -59,6 +59,7 @@ public class MainScreen extends AppCompatActivity
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         t1 = (TextView) findViewById(R.id.countdown);
+        countDownTimer();
         reject = (Button) findViewById(R.id.req_reject);
 
 
@@ -72,6 +73,9 @@ public class MainScreen extends AppCompatActivity
                 Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+"checking accept ");
 
             rejectData();
+                Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -81,6 +85,9 @@ public class MainScreen extends AppCompatActivity
             public void onClick(View v) {
                 Log.v(""+MainScreen.this.getClass().getSimpleName(),"Channel: "+"checking accept ");
                 datasend();
+                Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
+                startActivity(intent);
+                finish();
             }
         });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -91,7 +98,6 @@ public class MainScreen extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         onNewIntent(getIntent());
-        countDownTimer();
     }
 
     @Override
@@ -215,6 +221,9 @@ public class MainScreen extends AppCompatActivity
                         if (!error) {
                             Toast.makeText(MainScreen.this, "" + phone, Toast.LENGTH_LONG).show();
                             Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(MainScreen.this, "" + phone, Toast.LENGTH_LONG).show();
                             Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
@@ -276,6 +285,9 @@ public class MainScreen extends AppCompatActivity
 
                         if (message == 1) {
                             Toast.makeText(MainScreen.this, " Sucessfully cencel" + phone, Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
+                            startActivity(intent);
+                            finish();
                             //Toast.makeText(MainScreen.this, "" + message, Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(MainScreen.this, "Error occor " + phone, Toast.LENGTH_LONG).show();
