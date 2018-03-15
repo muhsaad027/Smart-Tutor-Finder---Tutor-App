@@ -73,7 +73,6 @@
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Muhammad"
                         android:textSize="20sp" />
 
                     <TextView
@@ -91,7 +90,6 @@
                         android:paddingTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="+923313844515"
                         android:textSize="20sp" />
                     <TextView
                         android:paddingLeft="20dp"
@@ -109,7 +107,7 @@
                         android:paddingTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="saad@ahmedgraf.com"
+
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
