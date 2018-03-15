@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -25,6 +26,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,6 +37,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
     Button online, offline,currentTuition;
     Integer statusonline = 1;
     Integer statusoffline = 0;
+    TextView tutor_name,tutor_loc,tutor_qauli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,11 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         setContentView(R.layout.activity_main_home_screen_tutor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getTutorInfo();
+
+        tutor_loc = (TextView)findViewById(R.id.tutrolocation_main) ;
+        tutor_name = (TextView)findViewById(R.id.tutorname_main) ;
+        tutor_qauli = (TextView)findViewById(R.id.tutroqual_main) ;
 
         online = (Button) findViewById(R.id.getonline);
         offline = (Button) findViewById(R.id.getoffline);
@@ -207,4 +215,53 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         tutphone = settings.getString(PREF_UNAME, "");
         return tutphone;
     }
-}
+    public void getTutorInfo() {
+
+        String phone = loadPreferences();
+        if (phone.length() == 10) {
+            phone = "+92" + phone;
+        } else {
+            phone = "+92" + phone.substring(1);
+        }
+
+        AndroidNetworking.get(URLTutor.URL_GetTutorInfo)
+                .addQueryParameter("tutPhone", phone)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        boolean error = false;
+                        String message = "";
+
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("result");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+
+                                JSONObject item = jsonArray.getJSONObject(i);
+
+
+                                String name = item.getString("TutName");
+                                String location = item.getString("TutLocation");
+                                String qualification = item.getString("TutQual");
+                                tutor_qauli.setText(qualification);
+                                tutor_loc.setText(location);
+                                tutor_name.setText(name);
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error4
+                        Toast.makeText(MainHomeScreenTutor.this, "" + error, Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+}}
