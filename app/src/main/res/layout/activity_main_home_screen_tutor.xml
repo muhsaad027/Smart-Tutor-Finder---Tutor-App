@@ -150,6 +150,7 @@
                     android:layout_weight="1"
                     android:background="#256a72"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:text="New Tuition"
                     android:textColor="#fff"
                     android:textSize="16dp"
