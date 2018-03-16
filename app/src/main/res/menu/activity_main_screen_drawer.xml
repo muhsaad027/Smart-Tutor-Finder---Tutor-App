@@ -3,25 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/inbox"
-
-            android:title="Inbox" />
-        <item
-            android:id="@+id/mycourses"
-
-            android:title="Courses" />
-        <item
             android:id="@+id/ManageDayTime"
 
             android:title="My Availability" />
-        <item
-            android:id="@+id/faqs"
 
-            android:title="FAQs" />
-        <item
-            android:id="@+id/help"
-
-            android:title="Help" />
         <item
             android:id="@+id/settings"
 

@@ -138,15 +138,15 @@ public class MainScreen extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.inbox) {
+//        if (id == R.id.inbox) {
             // Handle the camera action
-        } else if (id == R.id.mycourses) {
+//        } else if (id == R.id.mycourses) {
+//
+//        } else if (id == R.id.faqs) {
+//
+//        } else if (id == R.id.help) {
 
-        } else if (id == R.id.faqs) {
-
-        } else if (id == R.id.help) {
-
-        } else if (id == R.id.settings) {
+          if (id == R.id.settings) {
 
         } else if (id == R.id.contactus) {
 
