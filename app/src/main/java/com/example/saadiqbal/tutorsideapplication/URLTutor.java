@@ -14,6 +14,7 @@ public class URLTutor {
     public static final  String URL_Registration = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/registerTutor";
     public static final String URL_Settings = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/getTutorProfile";
     public  static  String  URL_TUTOR_FCMKEY_UPDATE ="http://hometuition.ahmedgraf.com/HomeTuition/Test1/updatetTutor_FCMKey";
+    public static final String URL_AutoFillCourses ="http://hometuition.ahmedgraf.com/HomeTuition/Test1/CoursesAutoFill";
     public static final String URL_SendRequestResponse = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/sendRequestStudent";
     public static final String URL_StatusUpdate = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/statusUpdate";
     public static final String URL_DateTimeUpdate = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/daytimeupdate";

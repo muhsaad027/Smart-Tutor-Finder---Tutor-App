@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.saadiqbal.tutorsideapplication.AddCourses">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -11,8 +12,6 @@
         android:background="#160f29"
         android:layout_width="match_parent"
         android:layout_height="64dp">
-
-
         <TextView
             android:id="@+id/textHeader"
             android:layout_width="wrap_content"
@@ -25,8 +24,101 @@
             android:textSize="20dp"
             android:textColor="#ffffff"
             />
-
     </android.support.v7.widget.Toolbar>
 
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2"
+    android:orientation="vertical">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:weightSum="2"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/banner"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/linearLayout"
+            android:background="#fff">
+
+
+            <AutoCompleteTextView
+
+                android:id="@+id/searchAutoComplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:hint="search Courses"
+                android:imeOptions="actionSearch"
+                android:inputType="textAutoComplete|textAutoCorrect"></AutoCompleteTextView>
+            <!--<EditText
+            android:id="@+id/type_course"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="search by course"
+            android:padding="15dp"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            />-->
+
+            <Button
+                android:id="@+id/search_butons"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#160f29"
+                android:text="SELECT"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+</LinearLayout>
 
 </LinearLayout>
