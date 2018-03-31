@@ -55,7 +55,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         Courses courses = coursesList.get(position);
         holder.title.setText(courses.getName());
-        holder.count.setText(courses.getNumOfSongs() + " songs");
+        holder.count.setText(courses.getNumOfSongs());
 
         // loading courses cover using Glide library
         Glide.with(mContext).load(courses.getThumbnail()).into(holder.thumbnail);

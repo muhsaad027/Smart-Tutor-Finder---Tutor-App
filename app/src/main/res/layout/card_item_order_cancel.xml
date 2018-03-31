@@ -8,42 +8,96 @@
     android:layout_marginRight="5dp"
     android:layout_marginTop="5dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/StdReqID"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student ID         : 001"
+            android:text="Tuition ID          :   "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/Req_id"
+            />
+        <TextView
+            android:id="@+id/StdReqID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Req_id"
+            android:text=""
             android:textSize="18dp" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Name  :   "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/Name_id"
+            android:layout_below="@id/Req_id"
+            />
+
+        <TextView
             android:id="@+id/StdName"
+            android:layout_toRightOf="@id/Name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Student Name  : Muhammad Saad Iqbal"
+            android:layout_below="@id/Req_id"
+            android:text="Muhammad Saad Iqbal"
             android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Phone :   "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/Phone_id"
+            android:layout_below="@id/Name_id"
+            />
         <TextView
             android:id="@+id/StdPhone"
+            android:layout_toRightOf="@id/Phone_id"
+            android:layout_below="@id/Name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Student Phone : +923313844515"
+            android:text="+923313844515"
             android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuition Status  :   "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/TuitionStatus_id"
+            android:layout_below="@id/Phone_id"
+            />
         <TextView
             android:id="@+id/StdStatus"
+            android:layout_below="@id/Phone_id"
+            android:layout_toRightOf="@id/TuitionStatus_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Student Status : ACTIVE"
+            android:text=" ACTIVE"
             android:textSize="18dp" />
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuition Started :   "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:id="@+id/Duration"
+            android:layout_below="@id/TuitionStatus_id"
+            />
+        <TextView
             android:id="@+id/StdReqTime"
+            android:layout_below="@id/TuitionStatus_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request Time  : 23:32"
+            android:layout_toRightOf="@id/Duration"
+            android:text="23:32"
             android:textSize="18dp" />
 
         <Button
@@ -58,5 +112,5 @@
             android:background="#d70606"
             />
 
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

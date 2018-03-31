@@ -144,7 +144,10 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
             Intent intent = new Intent(MainHomeScreenTutor.this, CoursesDetails.class);
             startActivity(intent);
         }
-//        } else if (id == R.id.faqs) {
+             else if (id == R.id.Addcoursedetails) {
+            Intent i = new Intent(MainHomeScreenTutor.this,AddCourses.class);
+            startActivity(i);
+        }
 //
 //        } else if (id == R.id.help) {
 
@@ -152,7 +155,8 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
             Intent intent = new Intent(MainHomeScreenTutor.this, Settings.class);
             startActivity(intent);
         } else if (id == R.id.contactus) {
-
+            Intent intent = new Intent(MainHomeScreenTutor.this,Contactus.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

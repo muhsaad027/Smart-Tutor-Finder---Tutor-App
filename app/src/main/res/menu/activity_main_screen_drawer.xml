@@ -11,6 +11,10 @@
             android:id="@+id/coursedetails"
 
             android:title="My Courses" />
+        <item
+            android:id="@+id/Addcoursedetails"
+
+            android:title="Add New Course" />
 
         <item
             android:id="@+id/settings"
