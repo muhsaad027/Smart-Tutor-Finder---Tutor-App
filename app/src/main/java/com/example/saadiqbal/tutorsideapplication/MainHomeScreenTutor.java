@@ -140,13 +140,15 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
             Intent intent = new Intent(MainHomeScreenTutor.this, DayTimeBooking.class);
             startActivity(intent);
 
-//        } else if (id == R.id.mycourses) {
-//
+        } else if (id == R.id.coursedetails) {
+            Intent intent = new Intent(MainHomeScreenTutor.this, CoursesDetails.class);
+            startActivity(intent);
+        }
 //        } else if (id == R.id.faqs) {
 //
 //        } else if (id == R.id.help) {
 
-        } else if (id == R.id.settings) {
+         else if (id == R.id.settings) {
             Intent intent = new Intent(MainHomeScreenTutor.this, Settings.class);
             startActivity(intent);
         } else if (id == R.id.contactus) {

@@ -7,4 +7,6 @@
     <color name="black">#000</color>
     <color name="themeappblue">#FF256A72</color>
     <color name="bt_rq_back_ground_color">#08c611</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
 </resources>

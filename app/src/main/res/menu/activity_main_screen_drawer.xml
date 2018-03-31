@@ -8,6 +8,11 @@
             android:title="My Availability" />
 
         <item
+            android:id="@+id/coursedetails"
+
+            android:title="My Courses" />
+
+        <item
             android:id="@+id/settings"
 
             android:title="Settings" />

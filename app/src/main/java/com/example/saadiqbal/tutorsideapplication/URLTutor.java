@@ -20,6 +20,7 @@ public class URLTutor {
     public static final String URL_CurrentTuition = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/CurrentTuition";
     public static final String URL_RequestCencel = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/cencelRequestTutor";
     public static final String URL_GetTutorInfo = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/getStudentInfoLogin";
+    public static final String URL_MyCourses = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/TutorCoursesSelect";
 
 
     public  static  String getPhoneNo (Context context)
