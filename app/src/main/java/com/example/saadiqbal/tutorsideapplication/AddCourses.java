@@ -1,8 +1,15 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -16,9 +23,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AddCourses extends AppCompatActivity {
+public class AddCourses extends AppCompatActivity implements View.OnClickListener {
     final ArrayList<String> autofillcoursesDB = new ArrayList<String>();
     AutoCompleteTextView autoCompleteTextView;
+    Button insertcourse;
+    public static final String PREFS_NAME = "preferences";
+    public static final String PREF_UNAME = "Username";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +37,6 @@ public class AddCourses extends AppCompatActivity {
         AutoCourseFillData();
     }
     public void AutoCourseFillData() {
-
-
-
         AndroidNetworking.get(URLTutor.URL_AutoFillCourses)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -61,8 +68,91 @@ public class AddCourses extends AppCompatActivity {
 
                     }
                 });
+        insertcourse = (Button) findViewById(R.id.insertcourse_btn);
+        insertcourse.setOnClickListener(this);
+    }
+    public void datasend()
+    {
+        String phone = loadPreferences();
+        if (phone.length() == 10) {
+            phone = "+92" + phone;
+        } else {
+            phone = "+92" + phone.substring(1);
+        }
+        Log.e("a",""+phone);
+        final String finalPhone = phone;
+        AndroidNetworking.post(URLTutor.URL_TutorCourseInsert)
+                .addBodyParameter("TutPhone", phone)
+                .addBodyParameter("CourseName", autoCompleteTextView.getText().toString())
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        boolean error = false;
+                        String message = "";
 
+                        try {
+                            message = response.getString("message");
+                            error = response.getBoolean("error");
+                        } catch (JSONException e) {
+                            Log.e("AddCourses",""+e.getLocalizedMessage());
+                        }
+                        if(!error)
+                        {
+                            //   SendRegistrationTokenFCM.sendRegistrationToServer(MainHomeScreenTutor.this, FirebaseInstanceId.getInstance().getToken(), finalPhone);
+                            Toast.makeText(AddCourses.this,""+message,Toast.LENGTH_LONG).show();
+                        /*    Intent intent = new Intent(Login.this,MainHomeScreenTutor.class);
+                            startActivity(intent);
+                            finish();*/
+                        }
+                        else
+                        {
+                            Toast.makeText(AddCourses.this,""+message,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        Log.e("AddCoursesError",""+error.getLocalizedMessage());
+                        // handle error
+                    }
+                });
+    }
+    private String loadPreferences() {
 
+        String tutphone;
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,
+                Context.MODE_PRIVATE);
 
+        // Get value
+        tutphone = settings.getString(PREF_UNAME, "");
+        return tutphone;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.insertcourse_btn:
+                validations();
+                break;
+        }
+    }
+    public void validations() {
+        if (autoCompleteTextView.getText().toString().isEmpty()) {
+            autoCompleteTextView.setError("Select any course to Insert");
+            requestFocus(autoCompleteTextView);
+
+            return;
+        }
+        datasend();
+        Intent i =new Intent(AddCourses.this,MainHomeScreenTutor.class);
+        startActivity(i);;
+        finish();
+    }
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 }
