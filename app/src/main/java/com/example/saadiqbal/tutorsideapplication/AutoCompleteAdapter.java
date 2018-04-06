@@ -1,27 +1,36 @@
 package com.example.saadiqbal.tutorsideapplication;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
 
     private ArrayList<String> fullList;
     private ArrayList<String> mOriginalValues;
+
+    private  HashMap<String,String> progHashMap;
+
     private ArrayFilter mFilter;
+    private  int tv_Program;
+    private  int tv_Course;
+    public AutoCompleteAdapter(Context context, int resource, int tv_Course,int tv_Program, List<String> objects,HashMap<String,String> obj) {
 
-    public AutoCompleteAdapter(Context context, int resource, int textViewResourceId, List<String> objects) {
-
-        super(context, resource, textViewResourceId, objects);
+        super(context, resource, tv_Course, objects);
+        progHashMap = obj;
+        this.tv_Course = tv_Course;
         fullList = (ArrayList<String>) objects;
         mOriginalValues = new ArrayList<String>(fullList);
-
+        this.tv_Program = tv_Program;
     }
 
     @Override
@@ -37,7 +46,14 @@ public class AutoCompleteAdapter extends ArrayAdapter<String> implements Filtera
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        return super.getView(position, convertView, parent);
+
+      convertView = super.getView(position,convertView,parent);
+           TextView    tv = (TextView) convertView.findViewById(tv_Program);
+        TextView    courseTv = (TextView) convertView.findViewById(tv_Course);
+       // tv.setTypeface(tv.getTypeface(), Typeface.ITALIC);
+        courseTv.setTypeface(tv.getTypeface(), Typeface.BOLD);
+        tv.setText(""+progHashMap.get(fullList.get(position)));
+        return convertView;
     }
 
     @Override
@@ -54,11 +70,13 @@ public class AutoCompleteAdapter extends ArrayAdapter<String> implements Filtera
 
         @Override
         protected FilterResults performFiltering(CharSequence prefix) {
+
             FilterResults results = new FilterResults();
 
             if (mOriginalValues == null) {
                 synchronized (lock) {
                     mOriginalValues = new ArrayList<String>(fullList);
+
                 }
             }
 
@@ -107,4 +125,5 @@ public class AutoCompleteAdapter extends ArrayAdapter<String> implements Filtera
             }
         }
     }
+
 }

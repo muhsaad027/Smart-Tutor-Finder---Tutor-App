@@ -22,10 +22,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AddCourses extends AppCompatActivity implements View.OnClickListener {
     final ArrayList<String> autofillcoursesDB = new ArrayList<String>();
     AutoCompleteTextView autoCompleteTextView;
+    HashMap<String,String> progHashMap;
     Button insertcourse;
     public static final String PREFS_NAME = "preferences";
     public static final String PREF_UNAME = "Username";
@@ -37,7 +39,7 @@ public class AddCourses extends AppCompatActivity implements View.OnClickListene
         AutoCourseFillData();
     }
     public void AutoCourseFillData() {
-        AndroidNetworking.get(URLTutor.URL_AutoFillCourses)
+        AndroidNetworking.get(URLTutor.URL_AututextCourseWithProgramName)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -48,13 +50,16 @@ public class AddCourses extends AppCompatActivity implements View.OnClickListene
 
                         try {
                             JSONArray jsonArray = response.getJSONArray("result");
+                            progHashMap = new HashMap<String, String>();
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject item = jsonArray.getJSONObject(i);
                                 autofillcoursesDB.add(item.getString("CourseName"));
-                                AutoCompleteAdapter adapter = new AutoCompleteAdapter(AddCourses.this, android.R.layout.simple_dropdown_item_1line, android.R.id.text1, autofillcoursesDB);
-                                autoCompleteTextView.setAdapter(adapter);
+                                progHashMap.put(item.getString("CourseName"),item.getString("ProgName"));
                             }
+                            AutoCompleteAdapter adapter = new AutoCompleteAdapter(AddCourses.this, android.R.layout.simple_list_item_2, android.R.id.text1,android.R.id.text2, autofillcoursesDB,progHashMap);
+                            autoCompleteTextView.setAdapter(adapter);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
