@@ -85,6 +85,7 @@ public class DayTimeBooking extends AppCompatActivity implements View.OnClickLis
         Button b = (Button) view;
         int colorId = R.color.white;
         if (view.getTag() != null)
+
             colorId = (int) b.getTag();
         if (colorId == R.color.themeappblue) {
             b.setTag(R.color.white);
