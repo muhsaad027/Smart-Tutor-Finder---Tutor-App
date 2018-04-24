@@ -33,6 +33,7 @@
         <activity android:name=".signup2" />
         <activity android:name=".Contactus" />
         <activity android:name=".Authentication" />
+        <activity android:name=".ChatActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

@@ -17,6 +17,11 @@
             android:title="Add New Course" />
 
         <item
+            android:id="@+id/chat_Box"
+
+            android:title="INBOX" />
+
+        <item
             android:id="@+id/settings"
 
             android:title="Settings" />

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.saadiqbal.testimplimentation.ChatActivity">
+
+    <RelativeLayout
+
+        android:id="@+id/container"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/TimingScreen"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#256a72"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/chatusername"
+                android:text="username"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="26dp" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <EditText
+
+            android:id="@+id/messageEdit"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+
+            android:layout_toLeftOf="@+id/chatSendButton"
+
+            android:autoText="true"
+
+            android:hint="type message" />
+
+        <Button
+
+            android:id="@+id/chatSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#160f29"
+
+            android:text="Send"
+
+            android:textColor="@color/background_material_light"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ListView
+
+            android:id="@+id/messagesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:divider="@null"
+
+            android:listSelector="@android:color/transparent"
+            android:layout_above="@+id/messageEdit"
+
+            android:transcriptMode="alwaysScroll"
+            android:layout_below="@+id/TimingScreen"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+
+            android:id="@+id/meLbl"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="left|center_vertical"
+
+            android:singleLine="false"
+
+            android:text="MySelf"
+
+            android:textSize="20dp"
+
+            android:visibility="gone" />
+
+        <TextView
+
+            android:id="@+id/friendLabel"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+
+            android:text="Friend"
+
+            android:textSize="20dp"
+
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>
