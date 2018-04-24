@@ -4,64 +4,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.example.saadiqbal.ht_studentmodule.Login"
     android:background="#160f29"
     android:orientation="vertical"
-    android:weightSum="1"
-    tools:context="com.example.saadiqbal.tutorsideapplication.Login">
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="80dp"
-        android:background="#fff"
-        android:orientation="vertical"
-        >
-        <EditText
-            android:id="@+id/tut_username"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="username"
-            android:layout_marginTop="50dp"
-            android:inputType="number"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            />
-        <EditText
-            android:id="@+id/tut_password"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password"
-            android:password="true"
-            android:paddingTop="15dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
-        <Button
-            android:id="@+id/loginb1"
-            android:background="@drawable/buttton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#160f29"
-            android:text="LOGIN"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#ffff"
-            android:layout_gravity="center"
-            />
-    </LinearLayout>
+    android:weightSum="3">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#246a72">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="0.9"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0.2">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:background="#FF246A72"
+            >
+
+        </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/tut_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:maxLength="11"
+
+            android:drawableLeft="@drawable/celicon"
+            android:hint="UserID ( e.g 03313844515 )"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <!--<EditText-->
+        <!--android:id="@+id/loginpass"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="50dp"-->
+        <!--android:layout_marginRight="50dp"-->
+        <!--android:drawableLeft="@drawable/passwordicon"-->
+        <!--android:drawableRight="@drawable/visible"-->
+        <!--android:hint=" User Password"-->
+        <!--android:inputType="textPassword"-->
+        <!--android:maxLines="1"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:password="true"-->
+        <!--android:singleLine="true" />-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/tut_password"
+                android:layout_width="wrap_content"
+                android:drawablePadding="10dp"
+
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/passwordicon"
+                android:drawableRight="@drawable/visible"
+                android:ems="13"
+                android:hint="User Passowrd"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingTop="15dp"
+                android:password="true"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/show_pass"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:background="?android:attr/selectableItemBackground"
+                android:text=" " />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/loginb1"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+
+
+            android:background="@drawable/mybutton"
+            android:text="LOGIN"
+            android:textColor="#ffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/forgetpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Forget your password?"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/createaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Don't have account? Create Account"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.4"
+        android:orientation="vertical"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF246A72"
+            >
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Copyright © 2018, Home Tuition"
+            android:textColor="#fff"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
 </LinearLayout>

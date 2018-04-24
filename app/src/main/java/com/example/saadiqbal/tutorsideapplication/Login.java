@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -24,6 +25,9 @@ import org.json.JSONObject;
 
 public class Login extends AppCompatActivity {
 Button loginpage;
+    TextView forgetpasswrod, createAnewAccount;
+    private Button ButtonInvisible;
+
     EditText tutname,tutpass;
     //////////////////////
     public static final String PREFS_NAME = "preferences";
@@ -42,6 +46,37 @@ Button loginpage;
         setContentView(R.layout.activity_login);
         tutname = (EditText) findViewById(R.id.tut_username);
         tutpass = (EditText) findViewById(R.id.tut_password);
+        ButtonInvisible = (Button) findViewById(R.id.show_pass);
+
+        forgetpasswrod = (TextView) findViewById(R.id.forgetpass);
+        forgetpasswrod.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+
+        createAnewAccount = (TextView) findViewById(R.id.createaccount);
+        createAnewAccount.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent n = new Intent(Login.this, Signup.class);
+                startActivity(n);
+                finish();
+            }
+        });
+
+        ButtonInvisible.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                tutpass.setTransformationMethod(null);
+            }
+        });
 
         loginpage = (Button)findViewById(R.id.loginb1);
         loginpage.setOnClickListener(new View.OnClickListener() {
