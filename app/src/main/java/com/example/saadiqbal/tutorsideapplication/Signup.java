@@ -17,9 +17,21 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.regex.Pattern;
+
 public class Signup extends AppCompatActivity {
     Button next;
     EditText name,email,pass,username,contact,repass;
+    String password,repasscheck,emailstore;
+    public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9+._%-+]{1,256}" +
+                    "@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9-]{0,64}" +
+                    "(" +
+                    "." +
+                    "[a-zA-Z0-9][a-zA-Z0-9-]{0,25}" +
+                    ")+"
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,31 +57,48 @@ public class Signup extends AppCompatActivity {
     }
     public void validation()
     {
+        password = pass.getText().toString();
+        repasscheck = repass.getText().toString();
+        emailstore = email.getText().toString();
         if (name.getText().toString().isEmpty())
         {
             name.setError("Name is required!");
             requestFocus(name);
             return;
         }
-        if (email.getText().toString().isEmpty())
+        else if (email.getText().toString().isEmpty())
         {
             email.setError("Email is required!");
             requestFocus(email);
             return;
         }
-        if (pass.getText().toString().isEmpty())
+        else if (!EMAIL_ADDRESS_PATTERN.matcher(emailstore).matches())
+        {
+            email.setError("Enter Valid Email Address!");
+            requestFocus(email);
+            return;
+        }
+        else if (pass.getText().toString().isEmpty())
         {
             pass.setError("Password is required!");
             requestFocus(pass);
             return;
         }
-        if (repass.getText().toString().isEmpty())
+        else if (repass.getText().toString().isEmpty())
         {
             repass.setError("Re Enter the same Password!");
             requestFocus(repass);
             return;
         }
-        if (contact.getText().toString().isEmpty())
+        else if(!password.equals(repasscheck))
+        {
+            repass.setError("Password Doesn't match");
+            pass.setError("Password Doesn't match");
+            requestFocus(pass);
+            requestFocus(repass);
+            return;
+        }
+        else if (contact.getText().toString().isEmpty())
         {
             contact.setError("Contact Information is Required!");
             requestFocus(contact);

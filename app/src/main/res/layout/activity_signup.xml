@@ -4,99 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#160f29"
-    tools:context="com.example.saadiqbal.tutorsideapplication.Signup">
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"/>
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context="com.example.saadiqbal.ht_studentmodule.Signup">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="435dp"
-        android:background="#fff"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        >
-        <EditText
-            android:id="@+id/name"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Full Name"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="50dp"
-            />
-        <EditText
-            android:id="@+id/email"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Email Address"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            />
-
-        <EditText
-            android:id="@+id/password"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:password="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Password"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            />
-        <EditText
-            android:id="@+id/repassword"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:password="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Re Enter Password"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            />
-        <EditText
-            android:id="@+id/contactno"
-            android:singleLine="true"
-            android:maxLines="1"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contact Number"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            />
-        <Button
-            android:id="@+id/next"
-            android:background="@drawable/buttton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:backgroundTint="#160f29"
-            android:text="Next"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#ffff"
-            android:layout_gravity="center"
-            />
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#246a72">
+        android:layout_weight="1.2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CREATE A NEW ACCOUNT"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.22"
+        android:background="#160f29"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:text="STEP 1"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="#160f29"
+            android:text="STEP 2"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.29"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/usernameicon"
+            android:drawablePadding="10dp"
+            android:hint="User Name"
+            android:inputType="textPersonName"
+            android:maxLength="45"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/emailicon"
+            android:drawablePadding="10dp"
+            android:hint="User Email"
+            android:inputType="textEmailAddress"
+            android:maxLength="45"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/passwordicon"
+            android:drawablePadding="10dp"
+            android:hint="User Password"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:password="true"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/repassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/passwordicon"
+            android:drawablePadding="10dp"
+            android:hint="Re Enter Password"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:password="true"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/contactno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/celicon"
+            android:drawablePadding="10dp"
+            android:hint="Contact Number"
+            android:inputType="number"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/mybutton"
+            android:text="Next"
+            android:textColor="#ffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/loginscreenback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Already have Account ?"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:background="#160f29"></LinearLayout>
+
 </LinearLayout>

@@ -319,7 +319,7 @@ public class Authentication extends AppCompatActivity implements View.OnClickLis
                         if(!error)
                         {
                             Toast.makeText(Authentication.this,""+message,Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Authentication.this,MainHomeScreenTutor.class);
+                            Intent intent = new Intent(Authentication.this,Login.class);
                             startActivity(intent);
                             finish();
                         }

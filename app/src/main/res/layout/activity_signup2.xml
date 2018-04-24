@@ -1,26 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#160f29"
-    tools:context="com.example.saadiqbal.tutorsideapplication.signup2">
+    android:gravity="center"
+    android:weightSum="2"
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#160f29"
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CREATE A NEW ACCOUNT"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="435dp"
-        android:layout_marginTop="25dp"
-        android:background="#fff"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_weight="1.65"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#160f29"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="STEP 1"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:textStyle="bold"
+            android:layout_marginRight="1dp"
+            android:text="STEP 2"
+            android:layout_weight="1"
+            />
 
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:layout_height="match_parent"
+        android:layout_weight="0.35"
+        android:gravity="center"
+        android:orientation="vertical"
+       >
         <fragment
             android:layout_marginTop="20dp"
             android:id="@+id/place_fragment"
@@ -74,13 +112,14 @@
             android:hint="Teaching Timing eg: ( 6 - 8)"
             android:maxLines="1"
             android:singleLine="true" />
+
         <Button
             android:id="@+id/register"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:background="@drawable/buttton"
-            android:backgroundTint="#160f29"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/mybutton"
             android:text="Register"
             android:textColor="#ffff"
             android:textSize="20dp"
@@ -103,12 +142,7 @@
             android:layout_marginTop="10dp"
             android:autoLink="all"/>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#246a72">
     </LinearLayout>
 
 </LinearLayout>

@@ -103,6 +103,11 @@ Button loginpage;
             tutpass.setError("Password is required!");
             requestFocus(tutpass);
             return;
+        }else if (tutname.getText().toString().trim()
+                .length() < 11) {
+            tutname.setError("Invalid Phone Number!");
+            requestFocus(tutname);
+            return;
         }
         Intent intent = new Intent(Login.this, MainScreen.class);
         intent.putExtra("phonenumber", UnameValue);
