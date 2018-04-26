@@ -55,6 +55,8 @@ Button loginpage;
             public void onClick(View v) {
 
 
+                Intent  i = new Intent(Login.this,EnterNumberForget.class);
+                startActivity(i);
 
             }
         });

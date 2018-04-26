@@ -8,6 +8,7 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.example.saadiqbal.tutorsideapplication.ChatActivity;
 import com.example.saadiqbal.tutorsideapplication.MainHomeScreenTutor;
 import com.example.saadiqbal.tutorsideapplication.MainScreen;
 import com.example.saadiqbal.tutorsideapplication.R;
@@ -96,6 +97,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                 NotificationManager managers = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 managers.notify(0, builder.build());
+                break;
+            case "Message":
+                Intent notificationIntentss = new Intent(this, ChatActivity.class);
+                notificationIntentss.putExtra("title", notificationObject.getString("title"));
+                notificationIntentss.putExtra("type", notificationObject.getString("type"));
+                notificationIntentss.putExtra("reqId", notificationObject.getString("reqId"));
+                notificationIntentss.putExtra("message", notificationObject.getString("message"));
+
+
+                PendingIntent contentIntentss = PendingIntent.getActivity(this, 0, notificationIntentss,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(contentIntentss);
+                builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
+
+                NotificationManager managerss = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                managerss.notify(0, builder.build());
                 break;
 
         }

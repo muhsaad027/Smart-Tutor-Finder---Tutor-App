@@ -31,6 +31,9 @@
             android:label="Notification"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".signup2" />
+        <activity android:name=".ForgetPassword" />
+        <activity android:name=".AuthenticationForgetYourPassword" />
+        <activity android:name=".EnterNumberForget"></activity>
         <activity android:name=".Contactus" />
         <activity android:name=".Authentication" />
         <activity android:name=".ChatActivity" />
