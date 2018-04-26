@@ -24,6 +24,7 @@ public class URLTutor {
     public static final String URL_GetTutorInfo = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/getStudentInfoLogin";
     public static final String URL_MyCourses = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/TutorCoursesSelect";
     public static final String URL_TutorCourseInsert = "http://hometuition.ahmedgraf.com/HomeTuition/Test1/insertTutorCourses"; //TutorPhone & CourseName
+    public static final String URL_PasswordUpdate ="http://hometuition.ahmedgraf.com/HomeTuition/Test1/updateTutor_Password";
 
 
     public  static  String getPhoneNo (Context context)

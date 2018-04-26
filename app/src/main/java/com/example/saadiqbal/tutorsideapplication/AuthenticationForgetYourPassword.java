@@ -146,6 +146,7 @@ public class AuthenticationForgetYourPassword extends AppCompatActivity implemen
                                         Snackbar.LENGTH_SHORT).show();
                             }
                             Intent i = new Intent(AuthenticationForgetYourPassword.this,ForgetPassword.class);
+                            i.putExtra("nameT", phone);
                             startActivity(i);
                             finish();
 
