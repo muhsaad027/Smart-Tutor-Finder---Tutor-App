@@ -1,5 +1,6 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        NotificationClose(this,2);
         initControls();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -229,5 +231,11 @@ public class ChatActivity extends AppCompatActivity {
         // Get value
         tutphone = settings.getString(PREF_UNAME, "");
         return tutphone;
+    }
+    public static void NotificationClose(Context ctx,int notifyID)
+    {
+        String a = Context.NOTIFICATION_SERVICE;
+        NotificationManager m = (NotificationManager)ctx.getSystemService(a);
+        m.cancel(notifyID);
     }
 }

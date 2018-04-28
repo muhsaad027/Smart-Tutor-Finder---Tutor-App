@@ -1,6 +1,8 @@
 package com.example.saadiqbal.tutorsideapplication;
 
 import android.*;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -62,6 +64,7 @@ public class MainScreen extends AppCompatActivity
         countDownTimer();
         reject = (Button) findViewById(R.id.req_reject);
 
+        NotificationClose(this,0);
 
         setSupportActionBar(toolbar);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -347,5 +350,11 @@ public class MainScreen extends AppCompatActivity
             }
         }.start();
 
+    }
+    public static void NotificationClose(Context ctx,int notifyID)
+    {
+        String a = Context.NOTIFICATION_SERVICE;
+        NotificationManager m = (NotificationManager)ctx.getSystemService(a);
+        m.cancel(notifyID);
     }
 }

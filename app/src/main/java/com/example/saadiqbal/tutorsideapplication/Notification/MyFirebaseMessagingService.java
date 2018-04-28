@@ -81,6 +81,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 manager.notify(0, builder.build());
 
+
                 break;
             case "FinishTution":
                 Intent notificationIntents = new Intent(this, MainHomeScreenTutor.class);
@@ -90,13 +91,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationIntents.putExtra("message", notificationObject.getString("message"));
 
 
-                PendingIntent contentIntents = PendingIntent.getActivity(this, 0, notificationIntents,
+                PendingIntent contentIntents = PendingIntent.getActivity(this, 1, notificationIntents,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(contentIntents);
                 builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
                 NotificationManager managers = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                managers.notify(0, builder.build());
+                managers.notify(1, builder.build());
                 break;
             case "Message":
                 Intent notificationIntentss = new Intent(this, ChatActivity.class);
@@ -107,13 +108,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notificationIntentss.putExtra("tutname", notificationObject.getString("tutname"));
                 notificationIntentss.putExtra("createdat", notificationObject.getString("createdat"));
                 notificationIntentss.putExtra("phoneNo", notificationObject.getString("phoneNo"));
-                PendingIntent contentIntentss = PendingIntent.getActivity(this, 0, notificationIntentss,
+                PendingIntent contentIntentss = PendingIntent.getActivity(this, 2, notificationIntentss,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(contentIntentss);
                 builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
                 NotificationManager managerss = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                managerss.notify(0, builder.build());
+                managerss.notify(2, builder.build());
                 break;
 
         }

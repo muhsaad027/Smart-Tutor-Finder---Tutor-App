@@ -1,5 +1,6 @@
 package com.example.saadiqbal.tutorsideapplication;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,6 +45,7 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_home_screen_tutor);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        NotificationClose(this,1);
         setSupportActionBar(toolbar);
         getTutorInfo();
 
@@ -273,4 +275,11 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
                     }
                 });
 
-}}
+}
+    public static void NotificationClose(Context ctx,int notifyID)
+    {
+        String a = Context.NOTIFICATION_SERVICE;
+        NotificationManager m = (NotificationManager)ctx.getSystemService(a);
+        m.cancel(notifyID);
+    }
+}
