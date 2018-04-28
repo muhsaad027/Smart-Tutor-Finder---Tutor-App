@@ -44,7 +44,7 @@ public class AdapterTuitionCancel extends RecyclerView.Adapter<AdapterTuitionCan
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_order_cancel, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_tuition_cancel, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
