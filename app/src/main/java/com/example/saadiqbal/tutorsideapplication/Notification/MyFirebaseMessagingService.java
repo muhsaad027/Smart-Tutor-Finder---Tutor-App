@@ -100,7 +100,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 managers.notify(1, builder.build());
                 break;
             case "Message":
-                Intent notificationIntentss = new Intent(this, ChatActivity.class);
+               /* Intent notificationIntentss = new Intent(this, ChatActivity.class);
                 notificationIntentss.putExtra("title", notificationObject.getString("title"));
                 notificationIntentss.putExtra("type", notificationObject.getString("type"));
                 notificationIntentss.putExtra("chatId", notificationObject.getString("chatId"));
@@ -114,7 +114,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
 
                 NotificationManager managerss = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                managerss.notify(2, builder.build());
+                managerss.notify(2, builder.build());*/
+
+
+                Intent notificationIntentss = new Intent(this, ChatActivity.class);
+                notificationIntentss.putExtra("title", notificationObject.getString("title"));
+                notificationIntentss.putExtra("type", notificationObject.getString("type"));
+                notificationIntentss.putExtra("chatId", notificationObject.getString("chatId"));
+                notificationIntentss.putExtra("message", notificationObject.getString("message"));
+                notificationIntentss.putExtra("tutname", notificationObject.getString("tutname"));
+                notificationIntentss.putExtra("createdat", notificationObject.getString("createdat"));
+                notificationIntentss.putExtra("phoneNo", notificationObject.getString("phoneNo"));
+                notificationIntentss.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
+                startActivity(notificationIntentss);
+
                 break;
 
         }

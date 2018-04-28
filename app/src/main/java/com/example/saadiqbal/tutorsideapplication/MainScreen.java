@@ -54,6 +54,7 @@ public class MainScreen extends AppCompatActivity
     LatLng altitude;
     TextView t1;
     private GoogleMap mMap;
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class MainScreen extends AppCompatActivity
                 Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
                 startActivity(intent);
                 finish();
+                countDownTimer.cancel();
             }
         });
 
@@ -91,6 +93,7 @@ public class MainScreen extends AppCompatActivity
                 Intent intent = new Intent(MainScreen.this,MainHomeScreenTutor.class);
                 startActivity(intent);
                 finish();
+                countDownTimer.cancel();
             }
         });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -337,7 +340,7 @@ public class MainScreen extends AppCompatActivity
 
     }
     public void countDownTimer(){
-        new CountDownTimer(60000, 1000) {
+        countDownTimer  = new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 t1.setText("Remaing : " + millisUntilFinished / 1000);
@@ -348,7 +351,8 @@ public class MainScreen extends AppCompatActivity
                 startActivity(intent);
                 finish();
             }
-        }.start();
+        };
+        countDownTimer.start();
 
     }
     public static void NotificationClose(Context ctx,int notifyID)

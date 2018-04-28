@@ -71,6 +71,10 @@ public class ChatActivity extends AppCompatActivity {
             displayMessage(msg);
         }
         Log.v("Chatactivity","Message _______ "+messagecoming);
+
+
+
+
     }
 
     @Override
