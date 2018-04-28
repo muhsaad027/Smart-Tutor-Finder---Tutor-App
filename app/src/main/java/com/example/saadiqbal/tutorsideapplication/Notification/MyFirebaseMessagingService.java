@@ -49,8 +49,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void addNotification(JSONObject notificationObject) throws JSONException {
 
-        String phoneNo = notificationObject.getString("phoneNo");
-        String requestID = notificationObject.getString("reqId");
+       /* String phoneNo = notificationObject.getString("phoneNo");
+        String requestID = notificationObject.getString("reqId");*/
 
 
         NotificationCompat.Builder builder =
@@ -102,10 +102,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Intent notificationIntentss = new Intent(this, ChatActivity.class);
                 notificationIntentss.putExtra("title", notificationObject.getString("title"));
                 notificationIntentss.putExtra("type", notificationObject.getString("type"));
-                notificationIntentss.putExtra("reqId", notificationObject.getString("reqId"));
+                notificationIntentss.putExtra("chatId", notificationObject.getString("chatId"));
                 notificationIntentss.putExtra("message", notificationObject.getString("message"));
-
-
+                notificationIntentss.putExtra("tutname", notificationObject.getString("tutname"));
+                notificationIntentss.putExtra("createdat", notificationObject.getString("createdat"));
+                notificationIntentss.putExtra("phoneNo", notificationObject.getString("phoneNo"));
                 PendingIntent contentIntentss = PendingIntent.getActivity(this, 0, notificationIntentss,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(contentIntentss);

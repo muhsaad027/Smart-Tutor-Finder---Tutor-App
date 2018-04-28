@@ -112,5 +112,4 @@ public class ForgetPassword extends AppCompatActivity {
                     }
                 });
     }
-
 }
