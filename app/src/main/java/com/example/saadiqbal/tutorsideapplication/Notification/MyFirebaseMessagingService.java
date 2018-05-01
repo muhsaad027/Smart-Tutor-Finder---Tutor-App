@@ -15,7 +15,6 @@ import com.example.saadiqbal.tutorsideapplication.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,7 +54,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.mipmap.ic_ht_launcher)
                         .setContentTitle("" + notificationObject.getString("title"))
                         .setContentText("" + notificationObject.getString("message"));
 

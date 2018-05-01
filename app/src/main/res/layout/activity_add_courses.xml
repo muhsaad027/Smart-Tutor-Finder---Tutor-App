@@ -127,7 +127,15 @@
             android:textStyle="bold"
             android:id="@+id/insertcourse_btn"
             />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/coveradd"
+            />
     </LinearLayout>
+
 
 </LinearLayout>
 

@@ -149,8 +149,15 @@ public class MainHomeScreenTutor extends AppCompatActivity implements Navigation
              else if (id == R.id.Addcoursedetails) {
             Intent i = new Intent(MainHomeScreenTutor.this,AddCourses.class);
             startActivity(i);
-        } else if (id == R.id.chat_Box) {
+        } /*else if (id == R.id.chat_Box) {
             Intent intent = new Intent(MainHomeScreenTutor.this, ChatActivity.class);
+            startActivity(intent);
+        }*/
+        else if (id == R.id.logout) {
+            SharedPreferences settings = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+            settings.edit().clear().commit();
+            finish();
+            Intent intent = new Intent(this, AfterSplash.class);
             startActivity(intent);
         }
 //

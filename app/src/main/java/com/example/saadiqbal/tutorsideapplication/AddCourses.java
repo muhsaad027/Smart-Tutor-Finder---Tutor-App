@@ -147,7 +147,6 @@ public class AddCourses extends AppCompatActivity implements View.OnClickListene
         if (autoCompleteTextView.getText().toString().isEmpty()) {
             autoCompleteTextView.setError("Select any course to Insert");
             requestFocus(autoCompleteTextView);
-
             return;
         }
         datasend();

@@ -17,11 +17,6 @@
             android:title="Add New Course" />
 
         <item
-            android:id="@+id/chat_Box"
-
-            android:title="INBOX" />
-
-        <item
             android:id="@+id/settings"
 
             android:title="Settings" />
@@ -33,6 +28,10 @@
                 android:id="@+id/contactus"
 
                 android:title="Contact us" />
+            <item
+                android:id="@+id/logout"
+
+                android:title="Logout" />
         </menu>
     </item>
 
